@@ -35,13 +35,26 @@ const plans = [
   },
 ];
 
+const CheckIcon = () => (
+  <svg
+    className="h-4 w-4 shrink-0 text-green-600"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    aria-hidden="true"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+  </svg>
+);
+
 const Pricing = () => {
   return (
     <section className="mx-auto max-w-6xl px-8 py-20">
-      <h2 className="mb-4 text-center text-4xl font-extrabold text-slate-900">
+      <h2 className="mb-4 text-center text-4xl font-medium text-slate-900">
         Pilih paket yang sesuai
       </h2>
-      <p className="mb-12 text-center text-slate-600">
+      <p className="mb-12 text-center font-light text-slate-600">
         Mulai gratis, tingkatkan kapan pun bisnismu siap.
       </p>
 
@@ -51,23 +64,26 @@ const Pricing = () => {
             key={plan.id}
             className="flex flex-col border border-slate-300 bg-white p-8"
           >
-            <h3 className="text-2xl font-bold text-green-600">{plan.name}</h3>
-            <p className="mt-2 text-sm text-slate-500">{plan.description}</p>
+            <h3 className="text-2xl font-medium text-green-600">{plan.name}</h3>
+            <p className="mt-2 text-sm font-light text-slate-500">{plan.description}</p>
 
             <div className="my-6">
-              <span className="text-3xl font-extrabold text-slate-900">
+              <span className="text-3xl font-medium text-slate-900">
                 {plan.price}
               </span>
-              <span className="text-slate-500">{plan.period}</span>
+              <span className="font-light text-slate-500">{plan.period}</span>
             </div>
 
             <ul className="flex-1 space-y-2 text-slate-600">
               {plan.features.map((feature) => (
-                <li key={feature}>✓ {feature}</li>
+                <li key={feature} className="flex items-center gap-2">
+                  <CheckIcon />
+                  {feature}
+                </li>
               ))}
             </ul>
 
-            <button className="mt-8 rounded-full bg-pink-600 px-8 py-3 font-semibold text-white transition hover:bg-pink-900">
+            <button className="mt-8 rounded-full bg-pink-600 px-8 py-3 font-medium text-white transition hover:bg-pink-900">
               Pilih {plan.name}
             </button>
           </div>
